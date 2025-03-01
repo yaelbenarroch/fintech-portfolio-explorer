@@ -1,10 +1,10 @@
-
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChartContainer } from "@/components/ui/chart";
 import * as Recharts from "recharts";
-import { ArrowUpRight, BarChart3, LineChart, Wallet } from "lucide-react";
+import { ArrowUpRight, BarChart3, LineChart, Wallet, Brain } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   // Sample data for the dashboard
@@ -189,7 +189,6 @@ const Index = () => {
                 <Recharts.YAxis />
                 <Recharts.Tooltip />
                 <Recharts.Legend />
-                {/* Split into two different bars for buy and sell transactions */}
                 <Recharts.Bar
                   name="Buy"
                   dataKey={(data) => (data.amount > 0 ? data.amount : 0)}
@@ -232,10 +231,62 @@ const Index = () => {
         </Card>
       </div>
 
+      <div className="grid grid-cols-1 mb-8">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <Brain className="mr-2 h-5 w-5" />
+              ML-Powered Analytics
+            </CardTitle>
+            <CardDescription>
+              Advanced machine learning models for price prediction, portfolio optimization, and anomaly detection
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Card className="border border-purple-200">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm">Price Prediction</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">
+                    Random Forest models predict future asset prices based on historical data, technical indicators, and market sentiment.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="border border-purple-200">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm">Portfolio Optimization</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">
+                    Uses Modern Portfolio Theory and optimization algorithms to maximize returns while minimizing risk.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="border border-purple-200">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-sm">Anomaly Detection</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">
+                    Statistical methods and clustering algorithms identify unusual price movements that may indicate trading opportunities.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       <div className="flex justify-center mb-8">
-        <Button className="bg-purple-600 hover:bg-purple-700">
-          View Full Streamlit Analysis
-        </Button>
+        <Link to="/ml-dashboard">
+          <Button className="bg-purple-600 hover:bg-purple-700">
+            View Advanced ML Analytics
+          </Button>
+        </Link>
       </div>
 
       <footer className="text-center text-gray-500 text-sm">
